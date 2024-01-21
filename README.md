@@ -11,7 +11,7 @@ Crea un nuevo PROYECTO y crea el contador que creamos en android(sin funcionalid
 
 ## Resultado
 
-![](resourcesReadme\diseño.png)
+![](resourcesReadme/diseño.png)
 
 (Se ha intentado replicar lo máximo posible la disposición y el diseño de la interfaz creada en el proyecto de Android)
 
