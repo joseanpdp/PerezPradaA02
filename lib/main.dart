@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:perezpradaa03/button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +14,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a purple toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -31,11 +47,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int counter = 0;
 
-  void _incrementCounter() {
+  void incrementCounter() {
     setState(() {
-      _counter++;
+      counter++;
+    });
+  }
+
+  void decrementCounter() {
+    setState(() {
+      counter--;
+    });
+  }
+
+  void resetCounter() {
+    setState(() {
+      counter = 0;
     });
   }
 
@@ -52,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 width: double.infinity,
                 alignment: Alignment.center,
-                child: Text("CONTADOR",
+                child: const Text("CONTADOR",
                     style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
@@ -64,8 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 width: double.infinity,
                 alignment: Alignment.center,
-                child: Text("0",
-                    style: TextStyle(fontSize: 300, color: Colors.white)),
+                child: Text('$counter',
+                    style: const TextStyle(fontSize: 200, color: Colors.white)),
               ),
             ),
             Expanded(
@@ -76,36 +104,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary: Color.fromARGB(255, 42, 42, 42),
-                          minimumSize: Size(120, 60),
-                        ),
-                        child: Text("-",
-                            style:
-                                TextStyle(fontSize: 40, color: Colors.white)),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary: Color.fromARGB(255, 42, 42, 42),
-                          minimumSize: Size(120, 65),
-                        ),
-                        child: Text("RESET",
-                            style:
-                                TextStyle(fontSize: 30, color: Colors.white)),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary: Color.fromARGB(255, 42, 42, 42),
-                          minimumSize: Size(120, 60),
-                        ),
-                        child: Text("+",
-                            style:
-                                TextStyle(fontSize: 40, color: Colors.white)),
-                      )
+                      ButtonCounter(texto: "-", onPressed: decrementCounter),
+                      ButtonCounter(texto: "RESET", onPressed: resetCounter),
+                      ButtonCounter(texto: "+", onPressed: incrementCounter),
                     ],
                   )),
             ),
@@ -114,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 width: double.infinity,
                 alignment: Alignment.center,
-                child: Text("By José Antonio Pérez de Prada",
+                child: const Text("By José Antonio Pérez de Prada",
                     style: TextStyle(
                         fontSize: 20,
                         fontStyle: FontStyle.italic,
